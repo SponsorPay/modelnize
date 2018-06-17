@@ -14,9 +14,7 @@ export interface FetchAndCountResult<T> {
   total: number;
 }
 
-@extension([
-  sequelize.Model
-])
+@extension([{prototype: sequelize.Model}])
 export abstract class ModelExtensions<T> {
   abstract newInstance: (raw?: any) => T;
 
@@ -43,7 +41,7 @@ export abstract class ModelExtensions<T> {
     return this.newInstance(raw)
   }
 
-  async createOne(this: Model<any, any>, values: Partial<T> & any, options: CreateOptions): Promise<Partial<T>> {
+  async createOne(this: Model<any, any>, values: Partial<T> & any, options?: CreateOptions): Promise<Partial<T>> {
     const raw = await this.create(values, options)
     return this.newInstance(raw)
   }

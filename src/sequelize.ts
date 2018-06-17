@@ -29,7 +29,7 @@ export class SequelizeExtensions {
       }
     )
     model.newInstance = params.newInstance
-    return model
+    return model as Model<T, any>
   }
 }
 
