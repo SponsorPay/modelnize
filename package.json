@@ -1,0 +1,44 @@
+{
+  "name": "modelnize",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "scripts": {
+    "build": "rm -rf build && npm run compile",
+    "ci": "npm run build && npm run check-coverage",
+    "compile": "tsc -p tsconfig.prod.json",
+    "test": "mocha test/**/*.ts* --require=ts-node/register --require mocha-clean",
+    "watch": "tsc -p tsconfig.prod.json -w",
+    "coverage": "nyc --extension=.ts --extension=.tsx --include=src/**/*.ts* --all --reporter=text mocha --require=ts-node/register --require source-map-support/register --recursive test/**/*.ts*",
+    "check-coverage": "rm -rf .nyc_output && npm run coverage && nyc check-coverage"
+  },
+  "files": [
+    "build"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ts-trait": "^4.1.0",
+    "tslib": "^1.9.0"
+  },
+  "devDependencies": {
+    "@types/sequelize": "^4.27.15",
+    "data-class-copy": "^3.0.0",
+    "mysql2": "^1.5.3",
+    "sequelize": "^4.37.10",
+    "typescript": "^2.9.2",
+    "@types/chai": "^4.1.2",
+    "@types/lodash": "^4.14.109",
+    "@types/mocha": "^5.0.0",
+    "@types/node": "^9.6.4",
+    "@types/sinon": "^4.3.1",
+    "chai": "^4.1.2",
+    "istanbul": "^0.4.5",
+    "mocha": "^5.0.5",
+    "mocha-clean": "^1.0.0",
+    "nyc": "^11.7.1",
+    "sinon": "^5.0.1",
+    "ts-node": "^5.0.1"
+  }
+}
