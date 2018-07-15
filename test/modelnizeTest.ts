@@ -1,24 +1,20 @@
 import * as Sequelize from "sequelize"
 import {User} from "./user"
 import "../src"
+import {userSchema} from "./userSchema"
 
 const sql = new Sequelize({
   dialect: "mysql",
   database: "",
+  username: "",
+  password: "",
 })
 
 describe("modelnizeTest", function () {
   it("should modelnize", async () => {
     const users = sql.defineModel({
       newInstance: User.parse,
-      attributes: {
-        id: {
-          autoIncrement: true,
-          primaryKey: true,
-          type: Sequelize.INTEGER,
-        },
-        name: Sequelize.STRING
-      }
+      attributes: userSchema,
     })
 
     await sql.sync({alter: true})

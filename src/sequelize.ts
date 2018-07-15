@@ -1,4 +1,4 @@
-import {DefineAttributes, DefineOptions, Model, Sequelize} from "sequelize"
+import {DefineAttributes, DefineOptions, Sequelize} from "sequelize"
 import * as sequelize from "sequelize"
 import {extension} from "ts-trait/build/extension"
 
@@ -29,7 +29,6 @@ export class SequelizeExtensions {
       }
     )
     model.newInstance = params.newInstance
-    return model as Model<T, any>
+    return model
   }
 }
-
