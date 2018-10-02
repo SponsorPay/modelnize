@@ -6,7 +6,7 @@
   "types": "build/index.d.ts",
   "scripts": {
     "build": "rm -rf build && npm run compile",
-    "ci": "npm run build && npm run check-coverage",
+    "ci": "npm run lint && npm run build && npm test && npm version patch",
     "compile": "tsc -p tsconfig.prod.json",
     "test": "mocha test/**/*.ts* --require=ts-node/register --require mocha-clean",
     "watch": "tsc -p tsconfig.prod.json -w",
