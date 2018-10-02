@@ -27,4 +27,3 @@ export class User {
     Object.assign(this, params)
   }
 }
-

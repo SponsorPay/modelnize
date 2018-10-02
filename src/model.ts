@@ -35,12 +35,20 @@ export abstract class ModelExtensions<T> {
     return result != null ? this.newInstance(result.toJSON()) : null
   }
 
-  async updateOne(this: sequelize.Model<any, any>, values: Partial<T> & any, options: UpdateOptions): Promise<Partial<T>> {
+  async updateOne(
+    this: sequelize.Model<any, any>,
+    values: Partial<T> & any,
+    options: UpdateOptions
+  ): Promise<Partial<T>> {
     const raw = await this.update(values, options)
     return this.newInstance(raw)
   }
 
-  async createOne(this: sequelize.Model<any, any>, values: Partial<T> & any, options?: CreateOptions): Promise<Partial<T>> {
+  async createOne(
+    this: sequelize.Model<any, any>,
+    values: Partial<T> & any,
+    options?: CreateOptions
+  ): Promise<Partial<T>> {
     const raw = await this.create(values, options)
     return this.newInstance(raw)
   }
