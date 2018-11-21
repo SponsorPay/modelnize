@@ -2,26 +2,38 @@
   "name": "modelnize",
   "version": "1.1.0",
   "description": "",
-  "main": "build/index.js",
-  "types": "build/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
-    "build": "rm -rf build && npm run compile",
+    "build": "rm -rf lib && rm -rf es && npm run compile",
     "ci": "npm run lint && npm run build && npm test && npm version patch",
-    "compile": "tsc -p tsconfig.prod.json",
-    "test": "mocha test/**/*.ts* --require=ts-node/register --require mocha-clean",
+    "compile": "npm run compile:cjs && npm run compile:es",
+    "compile:cjs": "tsc -p tsconfig.prod.json",
+    "compile:es": "tsc -p tsconfig.prod.es.json",
+    "test": "npm run test:cjs && npm run test:es",
+    "test:cjs": "mocha 'test/**/*.ts*' --require=ts-node/register --require mocha-clean",
+    "test:es": "export TS_NODE_PROJECT=tsconfig.es.json && mocha 'test/**/*.ts*' --require=ts-node/register --require mocha-clean",
     "watch": "tsc -p tsconfig.prod.json -w",
-    "coverage": "nyc --extension=.ts --extension=.tsx --include=src/**/*.ts* --all --reporter=text mocha --require=ts-node/register --require source-map-support/register --recursive test/**/*.ts*",
     "check-coverage": "rm -rf .nyc_output && npm run coverage && nyc check-coverage",
-    "lint": "tslint --fix {src,test}/**/*.ts*"
+    "lint": "tslint '{src,test}/**/*.ts*'",
+    "fix": "npm run lint -- --fix",
+    "cd": "standard-version -m \"chore(release): %s [skip ci]\" && git push --follow-tags origin master && npm publish",
+    "lock": "git add 'package-lock.json' && (git diff-index --quiet HEAD || git commit -m 'Lock')",
+    "coverage": "nyc --extension=.ts --extension=.tsx --include=src/**/*.ts* --all --reporter=html mocha --require=ts-node/register --require source-map-support/register --recursive 'test/**/*.ts*'",
+    "codecov": "nyc report --reporter=json --reporter=html && codecov -f coverage/*.json"
   },
   "files": [
-    "build"
+    "lib",
+    "es"
   ],
   "author": "",
   "license": "ISC",
+  "peerDependencies": {
+    "sequelize": "^4.x"
+  },
   "dependencies": {
     "ts-trait": "^4.1.0",
-    "tslib": "^1.9.0"
+    "tslib": "^1.9.3"
   },
   "devDependencies": {
     "@types/chai": "^4.1.2",
@@ -41,6 +53,6 @@
     "sinon": "^5.0.1",
     "ts-node": "^5.0.1",
     "tslint": "^5.11.0",
-    "typescript": "^2.9.2"
+    "typescript": "^3.1.6"
   }
 }

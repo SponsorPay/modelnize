@@ -1,12 +1,24 @@
 import {DefineAttributes} from "sequelize"
 import * as sequelize from "sequelize"
 
-export const userSchema: DefineAttributes = {}
-
-userSchema.id = {
-  autoIncrement: true,
-  primaryKey: true,
-  type: sequelize.INTEGER,
+export interface UserSchema {
+  id: number
+  name: string
+  createdAt: Date,
+  active: boolean | null,
+  parentId: number
 }
 
-userSchema.name = sequelize.STRING
+export const userSchema = {
+  id: {
+    autoIncrement: true,
+    primaryKey: true,
+    type: sequelize.INTEGER,
+  },
+  name: sequelize.STRING,
+  createdAt: sequelize.DATE,
+  active: {
+    type: sequelize.BOOLEAN,
+    allowNull: true
+  }
+}
