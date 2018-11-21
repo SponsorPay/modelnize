@@ -1,3 +1,6 @@
 node_modules
 /.idea
-/build
+/lib
+/es
+/.nyc_output
+/coverage

@@ -11,7 +11,7 @@
       "es2015.promise",
       "es2015.core"
     ],
-    "target": "es5",
+    "target": "es2015",
     "declaration": true,
     "jsx": "react",
     "importHelpers": true,

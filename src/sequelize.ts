@@ -1,6 +1,7 @@
-import {DefineAttributes, DefineOptions, Model, Sequelize} from "sequelize"
+import {DefineAttributes, DefineOptions, Sequelize} from "sequelize"
 import * as sequelize from "sequelize"
 import {extension} from "ts-trait/build/extension"
+import {SQLType} from "./schema"
 
 declare module "sequelize" {
   interface Sequelize extends SequelizeExtensions {
@@ -8,19 +9,22 @@ declare module "sequelize" {
   }
 }
 
-export interface DefineParams<T> {
+export interface DefineParams<T, A extends DefineAttributes = DefineAttributes> {
   newInstance: (raw?: any) => T;
-  attributes: DefineAttributes;
+  attributes: A;
   options?: DefineOptions<any>;
 }
 
 @extension([sequelize])
 export class SequelizeExtensions {
-  defineModel<T>(this: Sequelize, params: DefineParams<T>) {
+  defineModel<T, A extends DefineAttributes = DefineAttributes, S = Record<keyof A, SQLType>>(
+    this: Sequelize,
+    params: DefineParams<T, A>
+  ) {
     const instance = params.newInstance()
     const ctor = instance.constructor
     const modelName = ctor.name.replace(/^[A-Z]/, s => s.toLowerCase())
-    const model = this.define(
+    const model = this.define<T, S>(
       modelName,
       params.attributes, {
         tableName: modelName,
@@ -32,4 +36,3 @@ export class SequelizeExtensions {
     return model
   }
 }
-

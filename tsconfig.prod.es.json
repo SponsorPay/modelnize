@@ -11,22 +11,18 @@
       "es2015.promise",
       "es2015.core"
     ],
-    "target": "es5",
+    "target": "es2015",
+    "module": "commonjs",
     "declaration": true,
+    "outDir": "es",
     "jsx": "react",
     "importHelpers": true,
     "skipLibCheck": true,
     "strict": true,
     "sourceMap": true,
-    "moduleResolution": "node",
-    "baseUrl": ".",
-    "paths": {
-      "@revdesk/base-types": [
-        "packages/base-types/src"
-      ]
-    }
+    "moduleResolution": "node"
   },
   "include": [
-    "src/**/*.ts*", "test/**/*.ts*"
+    "src/**/*.ts*"
   ]
 }

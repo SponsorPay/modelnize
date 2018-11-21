@@ -1,44 +1,60 @@
 {
   "name": "modelnize",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
-  "main": "build/index.js",
-  "types": "build/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
-    "build": "rm -rf build && npm run compile",
-    "ci": "npm run build && npm run check-coverage",
-    "compile": "tsc -p tsconfig.prod.json",
-    "test": "mocha test/**/*.ts* --require=ts-node/register --require mocha-clean",
+    "build": "rm -rf lib && rm -rf es && npm run compile",
+    "ci": "npm run lint && npm run build && npm test && npm version patch",
+    "compile": "npm run compile:cjs && npm run compile:es",
+    "compile:cjs": "tsc -p tsconfig.prod.json",
+    "compile:es": "tsc -p tsconfig.prod.es.json",
+    "test": "npm run test:cjs && npm run test:es",
+    "test:cjs": "mocha 'test/**/*.ts*' --require=ts-node/register --require mocha-clean",
+    "test:es": "export TS_NODE_PROJECT=tsconfig.es.json && mocha 'test/**/*.ts*' --require=ts-node/register --require mocha-clean",
     "watch": "tsc -p tsconfig.prod.json -w",
-    "coverage": "nyc --extension=.ts --extension=.tsx --include=src/**/*.ts* --all --reporter=text mocha --require=ts-node/register --require source-map-support/register --recursive test/**/*.ts*",
-    "check-coverage": "rm -rf .nyc_output && npm run coverage && nyc check-coverage"
+    "check-coverage": "rm -rf .nyc_output && npm run coverage && nyc check-coverage",
+    "lint": "tslint '{src,test}/**/*.ts*'",
+    "fix": "npm run lint -- --fix",
+    "cd": "standard-version -m \"chore(release): %s [skip ci]\" && git push --follow-tags origin master && npm publish",
+    "lock": "git add 'package-lock.json' && (git diff-index --quiet HEAD || git commit -m 'Lock')",
+    "coverage": "nyc --extension=.ts --extension=.tsx --include=src/**/*.ts* --all --reporter=html mocha --require=ts-node/register --require source-map-support/register --recursive 'test/**/*.ts*'",
+    "codecov": "nyc report --reporter=json --reporter=html && codecov -f coverage/*.json"
   },
   "files": [
-    "build"
+    "lib",
+    "es"
   ],
   "author": "",
   "license": "ISC",
+  "peerDependencies": {
+    "sequelize": "^4.x"
+  },
   "dependencies": {
     "ts-trait": "^4.1.0",
-    "tslib": "^1.9.0"
+    "tslib": "^1.9.3"
   },
   "devDependencies": {
-    "@types/sequelize": "^4.27.15",
-    "data-class-copy": "^3.0.0",
-    "mysql2": "^1.5.3",
-    "sequelize": "^4.37.10",
-    "typescript": "^2.9.2",
     "@types/chai": "^4.1.2",
     "@types/lodash": "^4.14.109",
     "@types/mocha": "^5.0.0",
     "@types/node": "^9.6.4",
+    "@types/sequelize": "^4.27.15",
     "@types/sinon": "^4.3.1",
     "chai": "^4.1.2",
+    "codecov": "^3.1.0",
+    "data-class-copy": "^3.0.0",
     "istanbul": "^0.4.5",
     "mocha": "^5.0.5",
     "mocha-clean": "^1.0.0",
+    "mysql2": "^1.5.3",
     "nyc": "^11.7.1",
+    "sequelize": "^4.37.10",
     "sinon": "^5.0.1",
-    "ts-node": "^5.0.1"
+    "standard-version": "^4.4.0",
+    "ts-node": "^5.0.1",
+    "tslint": "^5.11.0",
+    "typescript": "^3.1.6"
   }
 }
