@@ -7,7 +7,7 @@ import {UserSchema, userSchema} from "./userSchema"
 
 const sql = new Sequelize({
   dialect: "mysql",
-  database: "default_schema",
+  database: "circle_test",
   username: "root",
   password: "",
 })
