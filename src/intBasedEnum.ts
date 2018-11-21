@@ -8,7 +8,7 @@ export interface IntBasedEnumOptions {
 
 export function intBasedEnum(
   values: string[],
-  {separator, pairSeparator, from}: IntBasedEnumOptions = {separator: ", ", from: 1, pairSeparator: " - "}
+  {separator, pairSeparator, from}: IntBasedEnumOptions = {separator: ", ", from: 1, pairSeparator: "-"}
 ): sequelize.DefineAttributeColumnOptions {
   return {
     type: sequelize.TINYINT,

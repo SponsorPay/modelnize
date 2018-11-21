@@ -5,6 +5,6 @@ describe("intBasedEnum.test", function () {
   it("should", () => {
     expect(
       intBasedEnum(["boolean", "number", "string"]).comment
-    ).eq("1 - boolean, 2 - number, 3 - string")
+    ).eq("1-boolean, 2-number, 3-string")
   })
 })
