@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/kobiburnley/modelnize/compare/v1.2.0...v1.3.0) (2018-11-21)
+
+
+### Features
+
+* Int based enum ([#2](https://github.com/kobiburnley/modelnize/issues/2)) ([bfd1126](https://github.com/kobiburnley/modelnize/commit/bfd1126))
+
+
+
 <a name="1.2.0"></a>
 # 1.2.0 (2018-11-21)
 
