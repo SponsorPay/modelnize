@@ -15,6 +15,7 @@ const sql = new Sequelize({
 describe("modelnizeTest", function () {
   it("should modelnize", async () => {
     const users = sql.defineModel<User, DefineAttributes, UserSchema>({
+      modelName: "user",
       newInstance: User.parse,
       attributes: userSchema,
     })
