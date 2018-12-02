@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.3.1"></a>
+## [1.3.1](https://github.com/kobiburnley/modelnize/compare/v1.3.0...v1.3.1) (2018-12-02)
+
+
+### Bug Fixes
+
+* auto model name ([#3](https://github.com/kobiburnley/modelnize/issues/3)) ([2c14346](https://github.com/kobiburnley/modelnize/commit/2c14346))
+
+
+
 <a name="1.3.0"></a>
 # [1.3.0](https://github.com/kobiburnley/modelnize/compare/v1.2.0...v1.3.0) (2018-11-21)
 
