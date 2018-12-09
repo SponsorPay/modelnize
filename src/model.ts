@@ -1,4 +1,4 @@
-import {CreateOptions, FindOptions, UpdateOptions} from "sequelize"
+import {CreateOptions, FindOptions, UpdateOptions, BulkCreateOptions} from "sequelize"
 import * as sequelize from "sequelize"
 import {extension} from "ts-trait/build/extension"
 
@@ -38,9 +38,9 @@ export abstract class ModelExtensions<T, A> {
     return result != null ? this.newInstance((result as any).toJSON()) : null
   }
 
-  async updateOne<E>(
+  async updateOne(
     this: sequelize.Model<T, A>,
-    values: Partial<A> & E,
+    values: Partial<A>,
     options?: UpdateOptions
   ): Promise<Partial<T>> {
     const raw = await this.update(values, options)
@@ -54,5 +54,13 @@ export abstract class ModelExtensions<T, A> {
   ): Promise<Partial<T>> {
     const raw = await this.create(values as A, options)
     return this.newInstance(raw)
+  }
+
+  async createMany(
+    this: sequelize.Model<T, A>,
+    values: Partial<A>[],
+    options?: BulkCreateOptions): Promise<T[]> {
+    const raw = await this.bulkCreate(values as A[], options)
+    return raw.map((e: any) => e.toJSON()).map(this.newInstance)
   }
 }

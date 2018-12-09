@@ -12,15 +12,22 @@ const sql = new Sequelize({
   password: "",
 })
 
-describe("modelnizeTest", function () {
-  it("should modelnize", async () => {
-    const users = sql.defineModel<User, DefineAttributes, UserSchema>({
-      modelName: "user",
-      newInstance: User.parse,
-      attributes: userSchema,
-    })
+const users = sql.defineModel<User, DefineAttributes, UserSchema>({
+  modelName: "user",
+  newInstance: User.parse,
+  attributes: userSchema,
+})
 
+describe("modelnizeTest", function () {
+  before(async () => {
     await sql.sync({alter: true})
+  })
+
+  after(async () => {
+    await sql.close()
+  })
+
+  it("should modelnize", async () => {
 
     const user = await users.createOne(User.empty.copy({name: "Kool Ye"}))
     expect(user).to.be.instanceOf(User)
@@ -36,6 +43,14 @@ describe("modelnizeTest", function () {
     expect(items.length > 0).to.eq(true)
     expect(items.every(e => e instanceof User)).to.eq(true)
 
-    await sql.close()
+  })
+
+  it("should createMany", async () => {
+    console.log(
+      await users.createMany([
+        {name: "1"},
+        {name: "2"},
+      ])
+    )
   })
 })
