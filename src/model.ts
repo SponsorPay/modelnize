@@ -57,8 +57,8 @@ export abstract class ModelExtensions<T, A> {
   }
 
   async createMany(this: sequelize.Model<T, A>,
-             values: Partial<T>[],
-             options?: BulkCreateOptions): Promise<T[]> {
+                   values: Partial<T>[],
+                   options?: BulkCreateOptions): Promise<T[]> {
     const raw = await this.bulkCreate(values as A[], options)
     return raw.map((e: any) => e.toJSON()).map(this.newInstance)
   }
