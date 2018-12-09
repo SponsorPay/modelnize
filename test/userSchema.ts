@@ -1,11 +1,10 @@
-import {DefineAttributes} from "sequelize"
 import * as sequelize from "sequelize"
 
 export interface UserSchema {
   id: number
   name: string
-  createdAt: Date,
-  active: boolean | null,
+  createdAt: Date | null,
+  active?: boolean | null,
   parentId: number
 }
 
@@ -16,7 +15,10 @@ export const userSchema = {
     type: sequelize.INTEGER,
   },
   name: sequelize.STRING,
-  createdAt: sequelize.DATE,
+  createdAt: {
+    type: sequelize.DATE,
+    defaultValue: sequelize.NOW
+  },
   active: {
     type: sequelize.BOOLEAN,
     allowNull: true
