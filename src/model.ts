@@ -20,12 +20,12 @@ export interface ModelExtensions<T, A> {
 @extension([{prototype: sequelize.Model}])
 export abstract class ModelExtensions<T, A> {
 
-  async fetchAll(this: sequelize.Model<T, A>, options?: FindOptions<any>): Promise<Array<T>> {
+  async fetchAll(this: sequelize.Model<T, A>, options?: FindOptions<A>): Promise<Array<T>> {
     const results = await this.findAll(options)
     return results.map((e: any) => e.toJSON()).map(this.newInstance)
   }
 
-  async fetchAndCountAll(this: sequelize.Model<T, A>, options?: FindOptions<any>): Promise<FetchAndCountResult<T>> {
+  async fetchAndCountAll(this: sequelize.Model<T, A>, options?: FindOptions<A>): Promise<FetchAndCountResult<T>> {
     const {rows, count} = await this.findAndCountAll(options)
     return {
       total: count,
@@ -33,15 +33,15 @@ export abstract class ModelExtensions<T, A> {
     }
   }
 
-  async fetchOne(this: sequelize.Model<T, A>, options?: FindOptions<any>): Promise<T | null> {
+  async fetchOne(this: sequelize.Model<T, A>, options?: FindOptions<A>): Promise<T | null> {
     const result = await this.findOne(options)
     return result != null ? this.newInstance((result as any).toJSON()) : null
   }
 
-  async updateOne(
+  async updateOne<E>(
     this: sequelize.Model<T, A>,
-    values: Partial<T> & any,
-    options: UpdateOptions
+    values: Partial<A> & E,
+    options?: UpdateOptions
   ): Promise<Partial<T>> {
     const raw = await this.update(values, options)
     return this.newInstance(raw)
@@ -49,10 +49,10 @@ export abstract class ModelExtensions<T, A> {
 
   async createOne(
     this: sequelize.Model<T, A>,
-    values: Partial<T> & any,
+    values: Partial<A>,
     options?: CreateOptions
   ): Promise<Partial<T>> {
-    const raw = await this.create(values, options)
+    const raw = await this.create(values as A, options)
     return this.newInstance(raw)
   }
 }

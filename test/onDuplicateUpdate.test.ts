@@ -2,7 +2,7 @@ import {expect} from "chai"
 import * as Sequelize from "sequelize"
 import {DefineAttributes} from "sequelize"
 import "../src"
-import {onDuplicateUpdate} from "../src/onDuplicateUpdate"
+import "../src/onDuplicateUpdate"
 import {User} from "./user"
 import {UserSchema, userSchema} from "./userSchema"
 
@@ -21,7 +21,7 @@ describe("onDuplicateUpdate", function () {
       attributes: userSchema,
     })
 
-    expect(onDuplicateUpdate(
+    expect(users.onDuplicateUpdate(
       users, ["name"]
     )).to.eq("UPDATE `name`=VALUES(`name`)")
   })

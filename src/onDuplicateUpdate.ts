@@ -1,10 +1,20 @@
 import * as sequelize from "sequelize"
+import {extension} from "ts-trait/build/extension"
 
-export function onDuplicateUpdate(model: sequelize.Model<any, any>, attrs: string[]) {
-  const rawAttributes = (model as any).attributes
-  return "UPDATE " + attrs.map(attr => {
-    const field = rawAttributes && rawAttributes[attr] && rawAttributes[attr].field || attr
-    const key = `\`${field}\``
-    return `${key}=VALUES(${key})`
-  }).join(",")
+declare module "sequelize" {
+  interface Model<TInstance, TAttributes> extends OnDuplicateUpdate<TInstance, TAttributes> {
+
+  }
+}
+
+@extension([{prototype: sequelize.Model}])
+export abstract class OnDuplicateUpdate<T, A> {
+  onDuplicateUpdate(this: sequelize.Model<T, A>, attrs: string[]) {
+    const rawAttributes = (this as any).attributes
+    return "UPDATE " + attrs.map(attr => {
+      const field = rawAttributes && rawAttributes[attr] && rawAttributes[attr].field || attr
+      const key = `\`${field}\``
+      return `${key}=VALUES(${key})`
+    }).join(",")
+  }
 }
