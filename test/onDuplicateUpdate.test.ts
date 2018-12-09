@@ -13,7 +13,6 @@ const sql = new Sequelize({
   password: "",
 })
 
-
 describe("onDuplicateUpdate", function () {
   it("should onDuplicateUpdate", () => {
     const users = sql.defineModel<User, DefineAttributes, UserSchema>({
