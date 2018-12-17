@@ -53,4 +53,10 @@ describe("modelnizeTest", function () {
       ])
     )
   })
+
+  it("should createOne", async () => {
+    console.log(
+      await users.createOne({name: "1"})
+    )
+  })
 })
