@@ -42,7 +42,7 @@ export abstract class ModelExtensions<T, A> {
     this: sequelize.Model<T, A>,
     values: Partial<A>,
     options?: UpdateOptions
-  ): Promise<Partial<T>> {
+  ): Promise<T> {
     const raw = await this.update(values, options)
     return this.newInstance(raw)
   }
@@ -51,7 +51,7 @@ export abstract class ModelExtensions<T, A> {
     this: sequelize.Model<T, A>,
     values: Partial<A>,
     options?: CreateOptions
-  ): Promise<Partial<T>> {
+  ): Promise<T> {
     const raw = await this.create(values as A, options)
     return this.newInstance(raw)
   }

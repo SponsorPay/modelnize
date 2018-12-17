@@ -53,4 +53,21 @@ describe("modelnizeTest", function () {
       ])
     )
   })
+
+  it("should createOne", async () => {
+    console.log(
+      await users.createOne({name: "1"})
+    )
+  })
+
+  it("should updateOne", async () => {
+    const user =  await users.createOne({name: "1"})
+    console.log(
+      await users.updateOne({name: "10"}, {
+        where: {
+          id: user.id
+        }
+      })
+    )
+  })
 })
