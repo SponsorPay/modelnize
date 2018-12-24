@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.1.0"></a>
+# [2.1.0](https://github.com/kobiburnley/modelnize/compare/v1.5.1...v2.1.0) (2018-12-24)
+
+
+### Features
+
+* Sequelize 3 ([#7](https://github.com/kobiburnley/modelnize/issues/7)) ([e4ec11d](https://github.com/kobiburnley/modelnize/commit/e4ec11d))
+
+
+
 <a name="1.5.1"></a>
 ## [1.5.1](https://github.com/kobiburnley/modelnize/compare/v1.5.0...v1.5.1) (2018-12-17)
 
