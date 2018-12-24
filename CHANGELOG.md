@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.0.0"></a>
+# [3.0.0](https://github.com/kobiburnley/modelnize/compare/v2.1.0...v3.0.0) (2018-12-24)
+
+
+### Features
+
+* bump 3 ([#8](https://github.com/kobiburnley/modelnize/issues/8)) ([23d3485](https://github.com/kobiburnley/modelnize/commit/23d3485))
+
+
+### BREAKING CHANGES
+
+* bump 3
+
+
+
 <a name="2.1.0"></a>
 # [2.1.0](https://github.com/kobiburnley/modelnize/compare/v1.5.1...v2.1.0) (2018-12-24)
 
