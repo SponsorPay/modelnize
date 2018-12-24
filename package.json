@@ -1,6 +1,6 @@
 {
   "name": "modelnize",
-  "version": "1.5.1",
+  "version": "2.0.0",
   "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -29,7 +29,7 @@
   "author": "",
   "license": "ISC",
   "peerDependencies": {
-    "sequelize": "^4.x"
+    "sequelize": "^3.0.0"
   },
   "dependencies": {
     "ts-trait": "^4.1.0",
@@ -50,7 +50,7 @@
     "mocha-clean": "^1.0.0",
     "mysql2": "^1.5.3",
     "nyc": "^11.7.1",
-    "sequelize": "^4.37.10",
+    "sequelize": "^3.0.0",
     "sinon": "^5.0.1",
     "standard-version": "^4.4.0",
     "ts-node": "^5.0.1",
