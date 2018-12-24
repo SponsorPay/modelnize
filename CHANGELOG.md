@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="4.0.0"></a>
+# [4.0.0](https://github.com/kobiburnley/modelnize/compare/v3.0.0...v4.0.0) (2018-12-24)
+
+
+### Features
+
+* sequelize 4 ([#9](https://github.com/kobiburnley/modelnize/issues/9)) ([8412e03](https://github.com/kobiburnley/modelnize/commit/8412e03))
+
+
+### BREAKING CHANGES
+
+* sequelize 4
+
+
+
 <a name="3.0.0"></a>
 # [3.0.0](https://github.com/kobiburnley/modelnize/compare/v2.1.0...v3.0.0) (2018-12-24)
 
