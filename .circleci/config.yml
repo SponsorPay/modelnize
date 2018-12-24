@@ -15,7 +15,9 @@ jobs:
       - checkout
       - run:
           name: Install
-          command: npm install
+          command: |
+            npm install
+            npm install sequelize@^4.42.0 --no-save
       - run:
           name: Compile
           command: |
