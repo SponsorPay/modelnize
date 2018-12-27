@@ -69,7 +69,9 @@ export abstract class ModelExtensions<T, A> {
     return results.map((e: any) => e.toJSON()) as Custom[]
   }
 
-  async customFetchAndCountAll<Custom>(this: sequelize.Model<T, A>, options?: FindOptions<A>): Promise<FetchAndCountResult<Custom>> {
+  async customFetchAndCountAll<Custom>(
+    this: sequelize.Model<T, A>, options?: FindOptions<A>
+  ): Promise<FetchAndCountResult<Custom>> {
     const {rows, count} = await this.findAndCountAll(options)
     return {
       total: count,

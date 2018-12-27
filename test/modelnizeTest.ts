@@ -83,7 +83,6 @@ describe("modelnizeTest", function () {
     )
   })
 
-
   it("should customFetchOne", async () => {
     console.log(
       await users.customFetchOne({
