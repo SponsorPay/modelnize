@@ -70,4 +70,41 @@ describe("modelnizeTest", function () {
       })
     )
   })
+
+  it("should customFetchAll", async () => {
+    console.log(
+      await users.customFetchAll({
+        where: {
+          name: {
+            $like: "%oo%"
+          }
+        }
+      })
+    )
+  })
+
+
+  it("should customFetchOne", async () => {
+    console.log(
+      await users.customFetchOne({
+        where: {
+          name: {
+            $like: "%oo%"
+          }
+        }
+      })
+    )
+  })
+
+  it("should customFetchAndCountAll", async () => {
+    console.log(
+      await users.customFetchAndCountAll({
+        where: {
+          name: {
+            $like: "%oo%"
+          }
+        }
+      })
+    )
+  })
 })
