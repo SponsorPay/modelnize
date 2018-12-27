@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="4.1.0"></a>
+# [4.1.0](https://github.com/kobiburnley/modelnize/compare/v4.0.0...v4.1.0) (2018-12-27)
+
+
+### Features
+
+* custom fetch ([#10](https://github.com/kobiburnley/modelnize/issues/10)) ([38da512](https://github.com/kobiburnley/modelnize/commit/38da512))
+
+
+
 <a name="4.0.0"></a>
 # [4.0.0](https://github.com/kobiburnley/modelnize/compare/v3.0.0...v4.0.0) (2018-12-24)
 
