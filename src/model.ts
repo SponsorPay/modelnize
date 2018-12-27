@@ -20,7 +20,7 @@ export interface ModelExtensions<T, A> {
 @extension([{prototype: sequelize.Model}])
 export abstract class ModelExtensions<T, A> {
 
-  async fetchAll(this: sequelize.Model<T, A>, options?: FindOptions<A>): Promise<Array<T>> {
+  async fetchAll(this: sequelize.Model<T, A>, options?: FindOptions<A>): Promise<T[]> {
     const results = await this.findAll(options)
     return results.map((e: any) => e.toJSON()).map(this.newInstance)
   }
@@ -62,5 +62,25 @@ export abstract class ModelExtensions<T, A> {
     options?: BulkCreateOptions): Promise<T[]> {
     const raw = await this.bulkCreate(values as A[], options)
     return raw.map((e: any) => e.toJSON()).map(this.newInstance)
+  }
+
+  async customFetchAll<Custom>(this: sequelize.Model<T, A>, options?: FindOptions<A>): Promise<Custom[]> {
+    const results = await this.findAll(options)
+    return results.map((e: any) => e.toJSON()) as Custom[]
+  }
+
+  async customFetchAndCountAll<Custom>(
+    this: sequelize.Model<T, A>, options?: FindOptions<A>
+  ): Promise<FetchAndCountResult<Custom>> {
+    const {rows, count} = await this.findAndCountAll(options)
+    return {
+      total: count,
+      records: rows.map((e: any) => e.toJSON()) as Custom[]
+    }
+  }
+
+  async customFetchOne<Custom>(this: sequelize.Model<T, A>, options?: FindOptions<A>): Promise<Custom | null> {
+    const result = await this.findOne(options)
+    return result != null ? (result as any).toJSON() as Custom : null
   }
 }
