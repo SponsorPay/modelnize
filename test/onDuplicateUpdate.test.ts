@@ -21,6 +21,6 @@ describe("onDuplicateUpdate", function () {
       attributes: userSchema,
     })
 
-    expect(users.onDuplicateUpdate(["name"])).to.eq("UPDATE `name`=VALUES(`name`)")
+    expect(users.onDuplicateUpdate(["name"])).to.eq("UPDATE `id`=LAST_INSERT_ID(`id`), `name`=VALUES(`name`)")
   })
 })
