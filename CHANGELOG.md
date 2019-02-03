@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="4.2.0"></a>
+# [4.2.0](https://github.com/kobiburnley/modelnize/compare/v4.1.0...v4.2.0) (2019-02-03)
+
+
+### Features
+
+* **OnDuplicateUpdate:** last_insert_id ([#11](https://github.com/kobiburnley/modelnize/issues/11)) ([e374111](https://github.com/kobiburnley/modelnize/commit/e374111))
+
+
+
 <a name="4.1.0"></a>
 # [4.1.0](https://github.com/kobiburnley/modelnize/compare/v4.0.0...v4.1.0) (2018-12-27)
 
