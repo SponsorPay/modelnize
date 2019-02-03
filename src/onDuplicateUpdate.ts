@@ -13,11 +13,12 @@ export abstract class OnDuplicateUpdate<T, A> {
     const pk = QueryGenerator.quoteIdentifier(primaryKeyField)
     return "UPDATE " + [
       `${pk}=LAST_INSERT_ID(${pk})`,
-      ...attrs.map(attr => {
+    ].concat(
+      attrs.map(attr => {
         const field = attributes && attributes[attr] && attributes[attr].field || attr
         const key = QueryGenerator.quoteIdentifier(field)
         return `${key}=VALUES(${key})`
       })
-    ].join(", ")
+    ).join(", ")
   }
 }
