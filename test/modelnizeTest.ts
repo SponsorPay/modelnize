@@ -95,6 +95,16 @@ describe("modelnizeTest", function () {
     )
   })
 
+  it("should customFetchAndCountAll", async () => {
+    await users.customFetchAndCountAll({
+      where: {
+        name: {
+          $like: "%oo%"
+        }
+      }
+    })
+  })
+
   it("should createOneCustom", async () => {
     const {name} = await users.createOneCustom<{name: string}>({name: "a3473"})
     expect(name).to.eq("a3473")
@@ -105,8 +115,6 @@ describe("modelnizeTest", function () {
       {name: "abc"},
       {name: "axy"},
     ])
-
-    console.log(created)
 
     expect(created.length).to.eq(2)
     expect(created.some(e => e.name === "axy")).to.eq(true)
