@@ -56,12 +56,30 @@ export abstract class ModelExtensions<T, A> {
     return this.newInstance(raw)
   }
 
+  async createOneCustom<Custom>(
+    this: sequelize.Model<T, A>,
+    values: Partial<A>,
+    options?: CreateOptions
+  ): Promise<Custom> {
+    const raw = await this.create(values as A, options)
+    return (raw as any).toJSON() as Custom
+  }
+
   async createMany(
     this: sequelize.Model<T, A>,
     values: Partial<A>[],
     options?: BulkCreateOptions): Promise<T[]> {
     const raw = await this.bulkCreate(values as A[], options)
     return raw.map((e: any) => e.toJSON()).map(this.newInstance)
+  }
+
+  async createManyCustom<Custom>(
+    this: sequelize.Model<T, A>,
+    values: Partial<A>[],
+    options?: BulkCreateOptions
+  ): Promise<Custom[]> {
+    const raw = await this.bulkCreate(values as A[], options)
+    return raw.map((e: any) => e.toJSON()) as Custom[]
   }
 
   async customFetchAll<Custom>(this: sequelize.Model<T, A>, options?: FindOptions<A>): Promise<Custom[]> {
