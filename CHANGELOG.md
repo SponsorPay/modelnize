@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="4.5.1"></a>
+## [4.5.1](https://github.com/kobiburnley/modelnize/compare/v4.5.0...v4.5.1) (2020-02-08)
+
+
+### Bug Fixes
+
+* sequelize 5 compat ([#20](https://github.com/kobiburnley/modelnize/issues/20)) ([5ca072e](https://github.com/kobiburnley/modelnize/commit/5ca072e))
+
+
+
 <a name="4.5.0"></a>
 # [4.5.0](https://github.com/kobiburnley/modelnize/compare/v4.4.0...v4.5.0) (2020-02-08)
 
