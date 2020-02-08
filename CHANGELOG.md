@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="4.4.0"></a>
+# [4.4.0](https://github.com/kobiburnley/modelnize/compare/v4.3.1...v4.4.0) (2020-02-08)
+
+
+### Features
+
+* **Model:** selectQuerySQL ([#15](https://github.com/kobiburnley/modelnize/issues/15)) ([5fb8144](https://github.com/kobiburnley/modelnize/commit/5fb8144))
+
+
+
 <a name="4.3.1"></a>
 ## [4.3.1](https://github.com/kobiburnley/modelnize/compare/v4.3.0...v4.3.1) (2019-09-09)
 
