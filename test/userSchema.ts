@@ -17,7 +17,8 @@ export const userSchema = {
   name: sequelize.STRING,
   createdAt: {
     type: sequelize.DATE,
-    defaultValue: sequelize.NOW
+    defaultValue: sequelize.NOW,
+    field: "created_at"
   },
   active: {
     type: sequelize.BOOLEAN,
