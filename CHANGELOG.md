@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="4.5.0"></a>
+# [4.5.0](https://github.com/kobiburnley/modelnize/compare/v4.4.0...v4.5.0) (2020-02-08)
+
+
+### Features
+
+* **Model:** fields extension ([#19](https://github.com/kobiburnley/modelnize/issues/19)) ([b3a59bd](https://github.com/kobiburnley/modelnize/commit/b3a59bd))
+
+
+
 <a name="4.4.0"></a>
 # [4.4.0](https://github.com/kobiburnley/modelnize/compare/v4.3.1...v4.4.0) (2020-02-08)
 
