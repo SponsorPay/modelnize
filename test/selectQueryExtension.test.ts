@@ -11,7 +11,7 @@ const sql = new Sequelize({
   dialect: "mysql",
   database: "circle_test",
   username: "root",
-  password: "1234"
+  password: ""
 })
 
 const users = sql.defineModel<User, DefineAttributes, UserSchema>({
