@@ -29,14 +29,11 @@
       "no-require-imports": false,
       "no-var-requires": false,
       "no-console": false,
-      "quotemark": [],
-      "max-classes-per-file": [false],
+      "max-classes-per-file": false,
       "triple-equals": false,
       "no-empty": false,
       "array-type": false,
-      "space-before-function-paren": [true, {
-        "anonymous": "always"
-      }]
+      "space-before-function-paren": false
     },
     "rulesDirectory": []
 }
