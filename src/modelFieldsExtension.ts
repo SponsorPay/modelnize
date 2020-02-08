@@ -12,7 +12,7 @@ export abstract class ModelFieldsExtension<T, A> {
   get $(this: sequelize.Model<T, A>) {
     if (this._ModelFieldsExtension_attributeRawFieldsMap == null) {
       const attributeRawFieldsMap = {} as Record<keyof A, string>
-      const attrs = (this as any).attributes as Record<keyof A, {field: string}>
+      const attrs = (this as any).rawAttributes as Record<keyof A, {field: string}>
       for (const key of Object.keys(attrs)) {
         attributeRawFieldsMap[key as keyof A] = attrs[key as keyof A].field
       }

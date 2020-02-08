@@ -20,12 +20,7 @@
     "strict": true,
     "sourceMap": true,
     "moduleResolution": "node",
-    "baseUrl": ".",
-    "paths": {
-      "@revdesk/base-types": [
-        "packages/base-types/src"
-      ]
-    }
+    "baseUrl": "."
   },
   "include": [
     "src/**/*.ts*", "test/**/*.ts*"
