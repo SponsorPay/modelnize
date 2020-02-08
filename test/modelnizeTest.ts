@@ -35,7 +35,7 @@ describe("modelnizeTest", function() {
     const items = await users.fetchAll({
       where: {
         name: {
-          $like: "%oo%"
+          [Sequelize.Op.like]: "%oo%"
         }
       }
     })
@@ -71,7 +71,7 @@ describe("modelnizeTest", function() {
       await users.customFetchAll({
         where: {
           name: {
-            $like: "%oo%"
+            [Sequelize.Op.like]: "%oo%"
           }
         }
       })
@@ -83,7 +83,7 @@ describe("modelnizeTest", function() {
       await users.customFetchOne({
         where: {
           name: {
-            $like: "%oo%"
+            [Sequelize.Op.like]: "%oo%"
           }
         }
       })
@@ -94,7 +94,7 @@ describe("modelnizeTest", function() {
     await users.customFetchAndCountAll({
       where: {
         name: {
-          $like: "%oo%"
+          [Sequelize.Op.like]: "%oo%"
         }
       }
     })

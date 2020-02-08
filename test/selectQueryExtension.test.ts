@@ -31,7 +31,7 @@ describe("selectQueryExtension", function() {
   })
 
   it("should selectQuerySQL", async () => {
-    const {Op} = users.sequelize
+    const {Op} = Sequelize
     const havingActive = users.sequelize.literal(
       `BIT_OR(CASE WHEN "${users.$.active}" is null THEN true else false END) = false`
     )
