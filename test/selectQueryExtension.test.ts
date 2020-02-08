@@ -1,6 +1,7 @@
 import * as Sequelize from "sequelize"
 import {DefineAttributes} from "sequelize"
 import "../src/model"
+import "../src/modelFieldsExtension"
 import "../src/selectQueryExtension"
 import "../src/sequelize"
 import {User} from "./user"
@@ -10,7 +11,7 @@ const sql = new Sequelize({
   dialect: "mysql",
   database: "circle_test",
   username: "root",
-  password: ""
+  password: "1234"
 })
 
 const users = sql.defineModel<User, DefineAttributes, UserSchema>({
@@ -21,28 +22,29 @@ const users = sql.defineModel<User, DefineAttributes, UserSchema>({
 
 describe("selectQueryExtension", function() {
   before(async () => {
-    await sql.sync({alter: true})
+    await sql.sync()
   })
 
   after(async () => {
+    await users.drop()
     await sql.close()
   })
 
   it("should selectQuerySQL", async () => {
     const {Op} = users.sequelize
     const havingActive = users.sequelize.literal(
-      `BIT_OR(CASE WHEN "${users.rawAttributes.active.field}" is null THEN true else false END) = false`
+      `BIT_OR(CASE WHEN "${users.$.active}" is null THEN true else false END) = false`
     )
 
     const rawSQL = users.selectQuerySQL({
       tableAs: "active_users",
-      attributes: [users.rawAttributes.id.field],
-      group: [users.rawAttributes.id.field],
+      attributes: [users.$.id],
+      group: [users.$.id],
       having: {
         active: havingActive
       },
       where: {
-        [users.rawAttributes.createdAt.field]: {
+        [users.$.createdAt]: {
           [Op.gte]: new Date("2020-01-01"),
           [Op.lte]: new Date("2020-02-01")
         }

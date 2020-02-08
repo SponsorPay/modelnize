@@ -4,7 +4,6 @@ import {QueryGenerator} from "./queryGenerator"
 
 declare module "sequelize" {
   interface Model<TInstance, TAttributes> extends SelectQueryExtension<TInstance, TAttributes> {
-    rawAttributes: Record<keyof TAttributes, {field: string}>
     sequelize: sequelize.Sequelize
   }
 
