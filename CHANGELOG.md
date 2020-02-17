@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="5.0.0"></a>
+# [5.0.0](https://github.com/kobiburnley/modelnize/compare/v4.5.1...v5.0.0) (2020-02-17)
+
+
+### Features
+
+* defined model loose define attributes ([#21](https://github.com/kobiburnley/modelnize/issues/21)) ([3b8396c](https://github.com/kobiburnley/modelnize/commit/3b8396c))
+
+
+### BREAKING CHANGES
+
+* defined model loose define attributes
+
+
+
 <a name="4.5.1"></a>
 ## [4.5.1](https://github.com/kobiburnley/modelnize/compare/v4.5.0...v4.5.1) (2020-02-08)
 
