@@ -1,5 +1,5 @@
 import * as sequelize from "sequelize"
-import {DefineAttributes, DefineModelAttributes, DefineOptions, Sequelize} from "sequelize"
+import {DefineAttributes, DefineOptions, Sequelize} from "sequelize"
 import {extension} from "ts-trait/build/extension"
 
 declare module "sequelize" {
@@ -17,7 +17,7 @@ export interface DefineParams<T> {
 export class SequelizeExtensions {
   defineModel<T, A>(this: Sequelize, params: DefineParams<T>): sequelize.Model<T, A> {
     const {modelName} = params
-    const model = this.define<T, A>(modelName, params.attributes as DefineModelAttributes<A>, {
+    const model = this.define<T, A>(modelName, params.attributes, {
       tableName: modelName,
       timestamps: false,
       ...params.options
