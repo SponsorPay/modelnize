@@ -1,11 +1,10 @@
 import * as sequelize from "sequelize"
 
 export interface UserSchema {
-  id: number
+  id: string | number
   name: string
   createdAt: Date | null,
   active?: boolean | null,
-  parentId: number
 }
 
 export const userSchema = {

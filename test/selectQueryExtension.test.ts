@@ -14,7 +14,7 @@ const sql = new Sequelize({
   password: ""
 })
 
-const users = sql.defineModel<User, DefineAttributes, UserSchema>({
+const users = sql.defineModel<User, DefineAttributes>({
   modelName: "user",
   newInstance: User.parse,
   attributes: userSchema

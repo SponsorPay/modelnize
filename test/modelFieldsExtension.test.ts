@@ -1,6 +1,5 @@
 import {expect} from "chai"
 import * as Sequelize from "sequelize"
-import {DefineAttributes} from "sequelize"
 import "../src/modelFieldsExtension"
 import "../src/sequelize"
 import {User} from "./user"
@@ -13,7 +12,7 @@ const sql = new Sequelize({
   password: ""
 })
 
-const users = sql.defineModel<User, DefineAttributes, UserSchema>({
+const users = sql.defineModel<User, UserSchema>({
   modelName: "user",
   newInstance: User.parse,
   attributes: userSchema

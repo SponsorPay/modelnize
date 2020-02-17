@@ -18,7 +18,7 @@ export function queryGenerator(model: sequelize.Model<unknown, unknown>): QueryG
 
 @extension([{prototype: sequelize.Model}])
 export class SelectQueryExtension<T, A> {
-  selectQuerySQL(this: sequelize.Model<T, A>, query: sequelize.FindOptions<T>): string {
+  selectQuerySQL(this: sequelize.Model<T, A>, query: sequelize.FindOptions<A>): string {
     return queryGenerator(this)
       .selectQuery(this.getTableName() as string, query, this)
       .slice(0, -1)
