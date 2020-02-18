@@ -22,10 +22,15 @@ export function getQueryGeneratorWithoutTableQuote(model: sequelize.Model<unknow
   if (queryGeneratorWithoutTableQuote == null) {
     const instance = model.sequelize.getQueryInterface().QueryGenerator
     const QueryGeneratorConstructor = instance.constructor
-    queryGeneratorWithoutTableQuote = new QueryGeneratorConstructor({
-      sequelize: instance.sequelize,
-      _dialect: instance._dialect
-    })
+    if (QueryGeneratorConstructor === Object) {
+      queryGeneratorWithoutTableQuote = {...instance}
+    } else {
+      queryGeneratorWithoutTableQuote = new QueryGeneratorConstructor({
+        sequelize: instance.sequelize,
+        _dialect: instance._dialect
+      })
+    }
+
     queryGeneratorWithoutTableQuote.quoteTable = (e: unknown) => e
   }
   return queryGeneratorWithoutTableQuote
@@ -42,8 +47,6 @@ export class SelectQueryExtension<T, A> {
 
     const queryGenerator = from ? getQueryGeneratorWithoutTableQuote(this) : getQueryGenerator(this)
 
-    return queryGenerator
-      .selectQuery(from ? `(${from})` : this.getTableName() as string, query, this)
-      .slice(0, -1)
+    return queryGenerator.selectQuery(from ? `(${from})` : (this.getTableName() as string), query, this).slice(0, -1)
   }
 }
