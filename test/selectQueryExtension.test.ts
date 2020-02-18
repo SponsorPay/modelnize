@@ -11,7 +11,7 @@ const sql = new Sequelize({
   dialect: "mysql",
   database: "circle_test",
   username: "root",
-  password: ""
+  password: "1234"
 })
 
 const users = sql.defineModel<User, DefineAttributes>({
@@ -26,7 +26,7 @@ describe("selectQueryExtension", function() {
   })
 
   after(async () => {
-    await users.drop()
+    // await users.drop()
     await sql.close()
   })
 
@@ -60,5 +60,33 @@ describe("selectQueryExtension", function() {
     })
 
     await users.sequelize.query(rawSQL)
+  })
+
+  it("select from", async () => {
+    const {Op} = Sequelize
+    const havingActive = users.sequelize.literal(
+      `BIT_OR(CASE WHEN "${users.$.active}" is null THEN true else false END) = false`
+    )
+
+    const rawSQL = users.selectQuerySQL({
+      tableAs: "active_users",
+      attributes: [users.$.id],
+      from: users.selectQuerySQL({
+        tableAs: "active_users_2",
+        attributes: [users.$.id],
+        group: [users.$.id],
+        having: {
+          active: havingActive
+        },
+        where: {
+          [users.$.createdAt]: {
+            [Op.gte]: new Date("2020-01-01"),
+            [Op.lte]: new Date("2020-02-01")
+          }
+        }
+      })
+    })
+
+      await users.sequelize.query(rawSQL)
   })
 })
