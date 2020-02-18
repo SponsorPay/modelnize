@@ -5,13 +5,13 @@ import "../src/modelFieldsExtension"
 import "../src/selectQueryExtension"
 import "../src/sequelize"
 import {User} from "./user"
-import {UserSchema, userSchema} from "./userSchema"
+import {userSchema} from "./userSchema"
 
 const sql = new Sequelize({
   dialect: "mysql",
   database: "circle_test",
   username: "root",
-  password: "1234"
+  password: ""
 })
 
 const users = sql.defineModel<User, DefineAttributes>({
@@ -26,7 +26,7 @@ describe("selectQueryExtension", function() {
   })
 
   after(async () => {
-    // await users.drop()
+    await users.drop()
     await sql.close()
   })
 
@@ -87,6 +87,6 @@ describe("selectQueryExtension", function() {
       })
     })
 
-      await users.sequelize.query(rawSQL)
+    await users.sequelize.query(rawSQL)
   })
 })
