@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="5.1.0"></a>
+# [5.1.0](https://github.com/kobiburnley/modelnize/compare/v5.0.0...v5.1.0) (2020-02-18)
+
+
+### Features
+
+* custom FROM clause ([#22](https://github.com/kobiburnley/modelnize/issues/22)) ([b993118](https://github.com/kobiburnley/modelnize/commit/b993118))
+
+
+
 <a name="5.0.0"></a>
 # [5.0.0](https://github.com/kobiburnley/modelnize/compare/v4.5.1...v5.0.0) (2020-02-17)
 
