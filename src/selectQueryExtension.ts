@@ -19,7 +19,7 @@ export function getQueryGenerator(model: sequelize.Model<unknown, unknown>): Que
 let queryGeneratorWithoutTableQuote: QueryGenerator
 
 export function getQueryGeneratorWithoutTableQuote(model: sequelize.Model<unknown, unknown>): QueryGenerator {
-  if(queryGeneratorWithoutTableQuote == null) {
+  if (queryGeneratorWithoutTableQuote == null) {
     const instance = model.sequelize.getQueryInterface().QueryGenerator
     const QueryGeneratorConstructor = instance.constructor
     queryGeneratorWithoutTableQuote = new QueryGeneratorConstructor({
