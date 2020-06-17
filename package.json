@@ -52,7 +52,7 @@
     "mysql2": "^1.5.3",
     "nyc": "^11.7.1",
     "prettier": "^1.19.1",
-    "sequelize": "^4.42.0",
+    "sequelize": "^5.15.1",
     "sinon": "^5.0.1",
     "standard-version": "^4.4.0",
     "ts-node": "^5.0.1",
